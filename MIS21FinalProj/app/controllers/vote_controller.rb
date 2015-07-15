@@ -6,6 +6,12 @@ class VoteController < ApplicationController
   end
 
   def create
+    @vote = Vote.new(vote_params)
+      if @user.save
+        redirect_to vote_path(@user)
+      else
+      render 'vote/new'
+      end
   end
 
   def index
